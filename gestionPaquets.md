@@ -78,5 +78,7 @@ A partir du paquet coreutils
 User@localhost:~$ dpkg -S $(which -a ls)
 ```
 ![image](https://user-images.githubusercontent.com/97438358/192245961-a5bce332-3098-455c-972d-09704c042cd5.png) <br> <br>
-![image](https://user-images.githubusercontent.com/97438358/192246571-33001383-3ebf-4241-8b1d-880da12733d6.png)
+![image](https://user-images.githubusercontent.com/97438358/192246571-33001383-3ebf-4241-8b1d-880da12733d6.png) <br> <br>
+![image](https://user-images.githubusercontent.com/97438358/192247219-4ad123a0-2e6e-4257-8beb-a669f9fed6ce.png)
+
 
