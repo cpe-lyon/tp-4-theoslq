@@ -81,4 +81,26 @@ User@localhost:~$ dpkg -S $(which -a ls)
 ![image](https://user-images.githubusercontent.com/97438358/192246571-33001383-3ebf-4241-8b1d-880da12733d6.png) <br> <br>
 ![image](https://user-images.githubusercontent.com/97438358/192247219-4ad123a0-2e6e-4257-8beb-a669f9fed6ce.png)
 
+**Exercice 3.**
 
+```console
+User@localhost:~$ sudo apt list hollywoo | grep "installed" && echo "INSTALLE" || echo "NON INSTALLE"
+```
+![image](https://user-images.githubusercontent.com/97438358/192953851-b445d50e-2ea2-4301-be86-a8ee5d59a68d.png)
+
+**Exercice 4.**
+
+```console
+User@localhost:~$ dpkg -L coreutils
+```
+```console
+User@localhost:~$ dpkg -L coreutils | whereis [
+[ est identique à la commande test, qui verifie le type d'un fichier et compare des valeurs.
+```
+
+**Exercice 5.**
+
+```console
+Lynx : moteur de recherche
+Emacs : éditeur de texte
+```
