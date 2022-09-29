@@ -104,3 +104,8 @@ User@localhost:~$ dpkg -L coreutils | whereis [
 Lynx : moteur de recherche
 Emacs : éditeur de texte
 ```
+**Exercice 6.**
+
+```console
+![image](https://user-images.githubusercontent.com/97438358/192972085-28410f2a-c904-4d90-b8f1-ca1fee8a8470.png)
+``` 
