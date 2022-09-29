@@ -105,7 +105,39 @@ Lynx : moteur de recherche
 Emacs : éditeur de texte
 ```
 **Exercice 6.**
+1.
+```console
+User@localhost:~$ sudo add-apt-repository ppa:linuxuprising/java
+User@localhost:~$ sudo apt update
+User@localhost:~$ sudo apt install oracle-java17-installer
+```
 
 ```console
-![image](https://user-images.githubusercontent.com/97438358/192972085-28410f2a-c904-4d90-b8f1-ca1fee8a8470.png)
+Il contient le chemin de notre depot créé PPA.
 ``` 
+**Exercice 7.**
+
+1.
+```console
+User@localhost:~$ git clone https://gitlab.com/jallbrit/cbonsai
+```
+
+2.
+```console
+User@localhost:~$ git clone https://gitlab.com/jallbrit/cbonsai
+```
+
+3.
+```console
+User@localhost:~$ sudo apt install checkinstall
+```
+
+4.
+```console
+User@localhost:~$ sudo checkinstall bonsai
+User@localhost:~$ sudo cbonsai
+```
+
+**Exercice 8.**
+
+1.
