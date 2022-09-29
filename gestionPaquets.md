@@ -159,3 +159,8 @@ Priority: optional
 User@localhost:~/script$ dpkg-deb --build origine-commande
 dpkg-deb: building package 'origine-commande' in 'origine-commande.deb'.
 ```
+
+4.
+```console
+
+```
