@@ -141,3 +141,21 @@ User@localhost:~$ sudo cbonsai
 **Exercice 8.**
 
 1.
+
+2.
+```
+User@localhost:~$ nano control
+Package: origine-commande
+Version: 0.1
+Maintainer: Foo Bar
+Architecture: all
+Description: Cherche l'origine d'une commande
+Section: utils
+Priority: optional
+```
+
+3.
+```console
+User@localhost:~/script$ dpkg-deb --build origine-commande
+dpkg-deb: building package 'origine-commande' in 'origine-commande.deb'.
+```
