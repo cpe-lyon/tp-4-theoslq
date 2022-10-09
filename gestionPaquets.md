@@ -1,6 +1,6 @@
-**TP Gestion de Paquets**
+**TP Gestion de Paquets**  
 
-**Exercice 1. Commandes de base**
+**Exercice 1. Commandes de base**  
 
 1. 
 ```console
@@ -71,7 +71,7 @@ User@localhost:~$ sudo apt install sudoku
 ```
 ![image](https://user-images.githubusercontent.com/97438358/192221480-800b7450-8dc9-4801-aeae-9ac334cee475.png)
 
-**Exercice 2.**
+**Exercice 2.**  
 
 ```console
 A partir du paquet coreutils
@@ -81,14 +81,14 @@ User@localhost:~$ dpkg -S $(which -a ls)
 ![image](https://user-images.githubusercontent.com/97438358/192246571-33001383-3ebf-4241-8b1d-880da12733d6.png) <br> <br>
 ![image](https://user-images.githubusercontent.com/97438358/192247219-4ad123a0-2e6e-4257-8beb-a669f9fed6ce.png)
 
-**Exercice 3.**
+**Exercice 3.**  
 
 ```console
 User@localhost:~$ sudo apt list hollywoo | grep "installed" && echo "INSTALLE" || echo "NON INSTALLE"
 ```
 ![image](https://user-images.githubusercontent.com/97438358/192953851-b445d50e-2ea2-4301-be86-a8ee5d59a68d.png)
 
-**Exercice 4.**
+**Exercice 4.**  
 
 ```console
 User@localhost:~$ dpkg -L coreutils
@@ -98,13 +98,12 @@ User@localhost:~$ dpkg -L coreutils | whereis [
 [ est identique à la commande test, qui verifie le type d'un fichier et compare des valeurs.
 ```
 
-**Exercice 5.**
-
+**Exercice 5.**  
 ```console
 Lynx : moteur de recherche
 Emacs : éditeur de texte
 ```
-**Exercice 6.**
+**Exercice 6.**  
 1.
 ```console
 User@localhost:~$ sudo add-apt-repository ppa:linuxuprising/java
@@ -115,7 +114,7 @@ User@localhost:~$ sudo apt install oracle-java17-installer
 ```console
 Il contient le chemin de notre depot créé PPA.
 ``` 
-**Exercice 7.**
+**Exercice 7.**  
 
 1.
 ```console
@@ -138,13 +137,17 @@ User@localhost:~$ sudo checkinstall bonsai
 User@localhost:~$ sudo cbonsai
 ```
 
-**Exercice 8.**
-
+**Exercice 8.**  
+**Création d’un paquet Debian avec dpkg-deb**  
 1.
-
+```console
+User@localhost:~/script$ mkdir origine-commande
+User@localhost:~/script/origine-commande$ mkdir DEBIAN
+```
 2.
 ```
-User@localhost:~$ nano control
+User@localhost:~/script/origine-commande$ touch control
+User@localhost:~/script/origine-commande$ nano control
 Package: origine-commande
 Version: 0.1
 Maintainer: Foo Bar
@@ -160,7 +163,77 @@ User@localhost:~/script$ dpkg-deb --build origine-commande
 dpkg-deb: building package 'origine-commande' in 'origine-commande.deb'.
 ```
 
+**Création du dépôt personnel avec reprepro**  
+1.
+```console
+User@localhost:~$ mkdir repo-cpe
+```
+2.
+```console
+User@localhost:~/repo-cpe$ mkdir conf
+User@localhost:~/repo-cpe$ mkdir packages
+```
+3.
+```console
+User@localhost:~/repo-cpe/conf$ touch distributions
+User@localhost:~/repo-cpe/conf$ nano distributions
+Origin:  Un nom, une URL, ou tout texte expliquant la provenance du dépôt
+Label: repo-cpe
+Codename: cosmic
+Architectures: i386 amd64
+Components: universe
+Description: Une description du dépôt
+```
 4.
 ```console
+User@localhost:~/repo-cpe$ reprepro -b . export
+```
+5.
+```console
+User@localhost:~/repo-cpe$ cp /home/User/script/origine-commande.deb /packages
+User@localhost:~/repo-cpe/packages$ reprepro -b . includedeb cosmic origine-commande.deb
+```
+6.
+```console
+User@localhost:~/etc/apt/sources.list.d$  sudo touch repo-cpe.list
+User@localhost:~/etc/apt/sources.list.d$  sudo nano repo-cpe.list
+```
+<img width="250" alt="image" src="https://user-images.githubusercontent.com/97438358/194759353-18efcd9d-f68d-4207-85fb-c65c9254fbdc.png">  
 
+```console
+on écrit dans le nano de repo-cpe.list, la ligne ci-dessus.
+```
+
+7.
+```console
+User@localhost:~/etc/apt/sources.list.d$ cd 
+User@localhost:~$ sudo apt update
+```
+**Signature du dépôt avec GPG**  
+1.
+```console
+User@localhost:~/repo-cpe$ gpg --gen-key
+```
+2.
+```console
+User@localhost:~/repo-cpe/conf$ nano distributions
+Origin:  Un nom, une URL, ou tout texte expliquant la provenance du dépôt
+Label: repo-cpe
+Codename: cosmic
+Architectures: i386 amd64
+Components: universe
+Description: Une description du dépôt
+SignWith: yes
+```
+3.
+```console
+User@localhost:~/repo-cpe$ reprepro --ask-passphrase -b . export
+```
+4.
+```console
+User@localhost:~/repo-cpe$ gpg --export -a "auteur" > public.key
+```
+5.
+```console
+User@localhost:~/repo-cpe$ sudo apt-key add public.key
 ```
